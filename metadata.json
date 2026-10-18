@@ -1,0 +1,6 @@
+{
+  "name": "Unified Business Management Platform",
+  "description": "Multi-tenant business management and CRM SaaS with intelligent lead assignment, automated escalation, and service operations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

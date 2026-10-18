@@ -1,0 +1,735 @@
+{
+  "workspaces": [
+    {
+      "id": "ws-apex-01",
+      "name": "Apex Business Services",
+      "slug": "apex-services",
+      "createdAt": "2026-10-17T07:30:22.507Z",
+      "ownerId": "usr-sarah-owner"
+    },
+    {
+      "id": "ws-cross-tenant-test",
+      "name": "Isolated Beta Corp",
+      "slug": "isolated-beta",
+      "createdAt": "2026-10-17T07:30:22.507Z",
+      "ownerId": "usr-other-owner"
+    }
+  ],
+  "users": [
+    {
+      "id": "usr-sarah-owner",
+      "email": "owner@apexservices.com",
+      "passwordHash": "6013a7b6cf071e6d34e9d7247fb59fcf534b868e4bf9c0d56561f05786a4e320",
+      "salt": "e4d29a5f1b8c0e7d3a2f",
+      "fullName": "Sarah Chen (Owner)",
+      "createdAt": "2026-10-17T07:30:22.507Z"
+    },
+    {
+      "id": "usr-marcus-admin",
+      "email": "admin@apexservices.com",
+      "passwordHash": "6013a7b6cf071e6d34e9d7247fb59fcf534b868e4bf9c0d56561f05786a4e320",
+      "salt": "e4d29a5f1b8c0e7d3a2f",
+      "fullName": "Marcus Vance (Admin)",
+      "createdAt": "2026-10-17T07:30:22.507Z"
+    },
+    {
+      "id": "usr-david-manager",
+      "email": "manager@apexservices.com",
+      "passwordHash": "6013a7b6cf071e6d34e9d7247fb59fcf534b868e4bf9c0d56561f05786a4e320",
+      "salt": "e4d29a5f1b8c0e7d3a2f",
+      "fullName": "David Ross (Sales Manager)",
+      "createdAt": "2026-10-17T07:30:22.507Z"
+    },
+    {
+      "id": "usr-elena-agent",
+      "email": "agent@apexservices.com",
+      "passwordHash": "6013a7b6cf071e6d34e9d7247fb59fcf534b868e4bf9c0d56561f05786a4e320",
+      "salt": "e4d29a5f1b8c0e7d3a2f",
+      "fullName": "Elena Gomez (Account Exec)",
+      "createdAt": "2026-10-17T07:30:22.507Z"
+    }
+  ],
+  "memberships": [
+    {
+      "id": "mem-01",
+      "workspaceId": "ws-apex-01",
+      "userId": "usr-sarah-owner",
+      "role": "owner",
+      "createdAt": "2026-10-17T07:30:22.507Z"
+    },
+    {
+      "id": "mem-02",
+      "workspaceId": "ws-apex-01",
+      "userId": "usr-marcus-admin",
+      "role": "admin",
+      "createdAt": "2026-10-17T07:30:22.507Z"
+    },
+    {
+      "id": "mem-03",
+      "workspaceId": "ws-apex-01",
+      "userId": "usr-david-manager",
+      "role": "user",
+      "customPermissions": [
+        "crm:contacts:view",
+        "crm:contacts:create",
+        "crm:contacts:edit",
+        "crm:contacts:delete",
+        "crm:contacts:export",
+        "crm:opportunities:view",
+        "crm:opportunities:create",
+        "crm:opportunities:edit",
+        "crm:opportunities:delete",
+        "crm:opportunities:export",
+        "crm:sensitive_values:view",
+        "crm:pipelines:configure",
+        "leads:manage",
+        "leads:assign",
+        "leads:rules:configure",
+        "integrations:view",
+        "audit:view"
+      ],
+      "createdAt": "2026-10-17T07:30:22.507Z"
+    },
+    {
+      "id": "mem-04",
+      "workspaceId": "ws-apex-01",
+      "userId": "usr-elena-agent",
+      "role": "user",
+      "customPermissions": [
+        "crm:contacts:view",
+        "crm:contacts:create",
+        "crm:contacts:edit",
+        "crm:opportunities:view",
+        "crm:opportunities:create",
+        "crm:opportunities:edit",
+        "leads:manage"
+      ],
+      "createdAt": "2026-10-17T07:30:22.507Z"
+    }
+  ],
+  "availability": [
+    {
+      "id": "avail-01",
+      "workspaceId": "ws-apex-01",
+      "userId": "usr-sarah-owner",
+      "status": "available",
+      "updatedAt": "2026-10-18T07:30:22.507Z"
+    },
+    {
+      "id": "avail-02",
+      "workspaceId": "ws-apex-01",
+      "userId": "usr-marcus-admin",
+      "status": "available",
+      "updatedAt": "2026-10-18T07:30:22.507Z"
+    },
+    {
+      "id": "avail-03",
+      "workspaceId": "ws-apex-01",
+      "userId": "usr-david-manager",
+      "status": "available",
+      "updatedAt": "2026-10-18T07:30:22.507Z"
+    },
+    {
+      "id": "avail-04",
+      "workspaceId": "ws-apex-01",
+      "userId": "usr-elena-agent",
+      "status": "available",
+      "updatedAt": "2026-10-18T07:30:22.507Z"
+    }
+  ],
+  "pipelines": [
+    {
+      "id": "pipe-enterprise-01",
+      "workspaceId": "ws-apex-01",
+      "name": "Enterprise Service Sales",
+      "isDefault": true,
+      "createdAt": "2026-10-17T07:30:22.507Z",
+      "stages": [
+        {
+          "id": "stage-lead",
+          "workspaceId": "ws-apex-01",
+          "pipelineId": "pipe-enterprise-01",
+          "name": "Qualified Lead",
+          "order": 1,
+          "requiredFieldKeys": []
+        },
+        {
+          "id": "stage-discovery",
+          "workspaceId": "ws-apex-01",
+          "pipelineId": "pipe-enterprise-01",
+          "name": "Discovery Scheduled",
+          "order": 2,
+          "requiredFieldKeys": [
+            "budget_range"
+          ]
+        },
+        {
+          "id": "stage-proposal",
+          "workspaceId": "ws-apex-01",
+          "pipelineId": "pipe-enterprise-01",
+          "name": "Proposal Delivered",
+          "order": 3,
+          "requiredFieldKeys": [
+            "budget_range",
+            "implementation_timeline"
+          ]
+        },
+        {
+          "id": "stage-negotiation",
+          "workspaceId": "ws-apex-01",
+          "pipelineId": "pipe-enterprise-01",
+          "name": "Negotiation",
+          "order": 4,
+          "requiredFieldKeys": [
+            "budget_range",
+            "implementation_timeline",
+            "decision_maker_confirmed"
+          ]
+        },
+        {
+          "id": "stage-closed-won",
+          "workspaceId": "ws-apex-01",
+          "pipelineId": "pipe-enterprise-01",
+          "name": "Closed Won",
+          "order": 5,
+          "requiredFieldKeys": [
+            "budget_range",
+            "contract_reference"
+          ]
+        },
+        {
+          "id": "stage-closed-lost",
+          "workspaceId": "ws-apex-01",
+          "pipelineId": "pipe-enterprise-01",
+          "name": "Closed Lost",
+          "order": 6,
+          "requiredFieldKeys": []
+        }
+      ]
+    }
+  ],
+  "customFields": [
+    {
+      "id": "cf-01",
+      "workspaceId": "ws-apex-01",
+      "pipelineId": "pipe-enterprise-01",
+      "name": "Budget Range",
+      "key": "budget_range",
+      "type": "dropdown",
+      "options": [
+        "$10k - $25k",
+        "$25k - $50k",
+        "$50k - $100k",
+        "$100k+"
+      ],
+      "isRequired": true
+    },
+    {
+      "id": "cf-02",
+      "workspaceId": "ws-apex-01",
+      "pipelineId": "pipe-enterprise-01",
+      "name": "Implementation Timeline",
+      "key": "implementation_timeline",
+      "type": "dropdown",
+      "options": [
+        "Immediate (< 30 days)",
+        "1 - 3 Months",
+        "Q3 / Q4",
+        "Next Fiscal Year"
+      ],
+      "isRequired": false
+    },
+    {
+      "id": "cf-03",
+      "workspaceId": "ws-apex-01",
+      "pipelineId": "pipe-enterprise-01",
+      "name": "Decision Maker Confirmed",
+      "key": "decision_maker_confirmed",
+      "type": "checkbox",
+      "isRequired": false
+    },
+    {
+      "id": "cf-04",
+      "workspaceId": "ws-apex-01",
+      "pipelineId": "pipe-enterprise-01",
+      "name": "Contract Reference",
+      "key": "contract_reference",
+      "type": "text",
+      "isRequired": false
+    },
+    {
+      "id": "cf-05",
+      "workspaceId": "ws-apex-01",
+      "pipelineId": "pipe-enterprise-01",
+      "name": "Expected Start Date",
+      "key": "expected_start_date",
+      "type": "date",
+      "isRequired": false
+    }
+  ],
+  "companies": [
+    {
+      "id": "comp-01",
+      "workspaceId": "ws-apex-01",
+      "name": "Vanguard Logistics Corp",
+      "industry": "Supply Chain & Freight",
+      "website": "https://vanguardlogistics.example.com",
+      "phone": "+1 (555) 392-1084",
+      "createdAt": "2026-10-17T07:30:22.507Z"
+    },
+    {
+      "id": "comp-02",
+      "workspaceId": "ws-apex-01",
+      "name": "Helios Health Systems",
+      "industry": "Healthcare Technology",
+      "website": "https://helioshealth.example.com",
+      "phone": "+1 (555) 782-9901",
+      "createdAt": "2026-10-17T07:30:22.507Z"
+    },
+    {
+      "id": "comp-03",
+      "workspaceId": "ws-apex-01",
+      "name": "Solaria Solar Dynamics",
+      "industry": "Renewable Energy",
+      "website": "https://solariasolar.example.com",
+      "phone": "+1 (555) 438-1200",
+      "createdAt": "2026-10-17T07:30:22.507Z"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "cont-01",
+      "workspaceId": "ws-apex-01",
+      "companyId": "comp-01",
+      "name": "Robert Hastings",
+      "email": "robert.hastings@vanguard.example.com",
+      "phone": "+15552345678",
+      "tags": [
+        "Enterprise",
+        "High Priority",
+        "Warm Lead"
+      ],
+      "createdAt": "2026-10-17T07:30:22.507Z",
+      "updatedAt": "2026-10-18T06:30:22.507Z"
+    },
+    {
+      "id": "cont-02",
+      "workspaceId": "ws-apex-01",
+      "companyId": "comp-02",
+      "name": "Dr. Evelyn Reed",
+      "email": "ereed@helioshealth.example.com",
+      "phone": "+15558765432",
+      "tags": [
+        "Healthcare",
+        "Key Decision Maker"
+      ],
+      "createdAt": "2026-10-17T07:30:22.507Z",
+      "updatedAt": "2026-10-18T06:30:22.507Z"
+    },
+    {
+      "id": "cont-03",
+      "workspaceId": "ws-apex-01",
+      "companyId": "comp-03",
+      "name": "Carlos Mendez",
+      "email": "carlos@solariasolar.example.com",
+      "phone": "+15559876543",
+      "tags": [
+        "Inbound Web",
+        "Green Tech"
+      ],
+      "createdAt": "2026-10-17T07:30:22.507Z",
+      "updatedAt": "2026-10-18T06:30:22.507Z"
+    }
+  ],
+  "leads": [
+    {
+      "id": "lead-01",
+      "workspaceId": "ws-apex-01",
+      "title": "Enterprise Fleet Integration Suite",
+      "source": "web_form",
+      "contactId": "cont-01",
+      "companyId": "comp-01",
+      "assignedToUserId": "usr-elena-agent",
+      "acknowledged": true,
+      "acknowledgedAt": "2026-10-18T06:30:22.507Z",
+      "acknowledgedByUserId": "usr-elena-agent",
+      "ackDeadline": "2026-10-18T07:50:22.507Z",
+      "escalationLevel": 0,
+      "status": "converted",
+      "customFields": {
+        "budget_range": "$50k - $100k"
+      },
+      "notes": [
+        "Contact submitted RFQ through web portal for multi-depot tracking."
+      ],
+      "createdAt": "2026-10-18T06:30:22.507Z",
+      "updatedAt": "2026-10-18T06:30:22.507Z"
+    },
+    {
+      "id": "lead-02",
+      "workspaceId": "ws-apex-01",
+      "title": "Telemedicine Workflow Modernization",
+      "source": "twilio_whatsapp",
+      "contactId": "cont-02",
+      "companyId": "comp-02",
+      "assignedToUserId": "usr-elena-agent",
+      "acknowledged": false,
+      "ackDeadline": "2026-10-18T07:50:22.507Z",
+      "escalationLevel": 0,
+      "status": "open",
+      "customFields": {
+        "budget_range": "$100k+"
+      },
+      "notes": [
+        "Received WhatsApp inquiry: \"Need HIPAA compliant integration for 40 clinics.\""
+      ],
+      "createdAt": "2026-10-18T07:20:22.507Z",
+      "updatedAt": "2026-10-18T07:20:22.507Z"
+    },
+    {
+      "id": "lead-03",
+      "workspaceId": "ws-apex-01",
+      "title": "Solar Array Monitoring & Billing Platform",
+      "source": "manual",
+      "contactId": "cont-03",
+      "companyId": "comp-03",
+      "assignedToUserId": "usr-marcus-admin",
+      "acknowledged": false,
+      "ackDeadline": "2026-10-18T07:20:22.507Z",
+      "escalationLevel": 1,
+      "lastEscalatedAt": "2026-10-18T06:30:22.507Z",
+      "status": "open",
+      "customFields": {
+        "budget_range": "$25k - $50k"
+      },
+      "notes": [
+        "Auto-escalated to backup Marcus Vance after initial response window elapsed."
+      ],
+      "createdAt": "2026-10-18T06:00:22.507Z",
+      "updatedAt": "2026-10-18T06:30:22.507Z"
+    },
+    {
+      "id": "lead-overdue-1792308622508",
+      "workspaceId": "ws-apex-01",
+      "title": "Critical Overdue RFQ",
+      "source": "web_form",
+      "contactId": "cont-01",
+      "assignedToUserId": "usr-marcus-admin",
+      "acknowledged": false,
+      "ackDeadline": "2026-10-18T08:00:22.508Z",
+      "escalationLevel": 1,
+      "status": "open",
+      "customFields": {},
+      "notes": [
+        "SLA Violation: Escalated to Level 1 (usr-marcus-admin) due to unacknowledged deadline expiration."
+      ],
+      "createdAt": "2026-10-18T07:20:22.508Z",
+      "updatedAt": "2026-10-18T07:30:22.508Z",
+      "lastEscalatedAt": "2026-10-18T07:30:22.508Z"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "opp-01",
+      "workspaceId": "ws-apex-01",
+      "leadId": "lead-01",
+      "contactId": "cont-01",
+      "companyId": "comp-01",
+      "pipelineId": "pipe-enterprise-01",
+      "stageId": "stage-proposal",
+      "title": "Vanguard Global Fleet Telematics",
+      "valueCents": 4800000,
+      "currency": "USD",
+      "assignedToUserId": "usr-elena-agent",
+      "expectedCloseDate": "2026-11-30",
+      "customFields": {
+        "budget_range": "$50k - $100k",
+        "implementation_timeline": "1 - 3 Months"
+      },
+      "createdAt": "2026-10-17T07:30:22.507Z",
+      "updatedAt": "2026-10-18T06:30:22.507Z"
+    },
+    {
+      "id": "opp-02",
+      "workspaceId": "ws-apex-01",
+      "contactId": "cont-02",
+      "companyId": "comp-02",
+      "pipelineId": "pipe-enterprise-01",
+      "stageId": "stage-negotiation",
+      "title": "Helios Clinical Automation Rollout",
+      "valueCents": 12500000,
+      "currency": "USD",
+      "assignedToUserId": "usr-david-manager",
+      "expectedCloseDate": "2026-12-15",
+      "customFields": {
+        "budget_range": "$100k+",
+        "implementation_timeline": "Immediate (< 30 days)",
+        "decision_maker_confirmed": true
+      },
+      "createdAt": "2026-10-17T07:30:22.507Z",
+      "updatedAt": "2026-10-18T06:30:22.507Z"
+    },
+    {
+      "id": "opp-03",
+      "workspaceId": "ws-apex-01",
+      "contactId": "cont-03",
+      "companyId": "comp-03",
+      "pipelineId": "pipe-enterprise-01",
+      "stageId": "stage-closed-won",
+      "title": "Solaria Phase 1 Pilot Agreement",
+      "valueCents": 3200000,
+      "currency": "USD",
+      "assignedToUserId": "usr-marcus-admin",
+      "expectedCloseDate": "2026-10-15",
+      "customFields": {
+        "budget_range": "$25k - $50k",
+        "contract_reference": "SOL-2026-098-W"
+      },
+      "createdAt": "2026-10-17T07:30:22.507Z",
+      "updatedAt": "2026-10-18T06:30:22.507Z"
+    }
+  ],
+  "assignmentConfigs": {
+    "ws-apex-01": {
+      "workspaceId": "ws-apex-01",
+      "roundRobinEnabled": true,
+      "maxOpenLeadsPerUser": 5,
+      "ackDeadlineMinutes": 30,
+      "backupUserId": "usr-marcus-admin",
+      "escalationManagerUserId": "usr-david-manager",
+      "reassignOnUnavailable": true
+    }
+  },
+  "conversations": [
+    {
+      "id": "conv-01",
+      "workspaceId": "ws-apex-01",
+      "contactId": "cont-02",
+      "assignedToUserId": "usr-elena-agent",
+      "lastMessageAt": "2026-10-18T07:20:22.507Z",
+      "messages": [
+        {
+          "id": "msg-01",
+          "from": "whatsapp:+15558765432",
+          "to": "whatsapp:+14155238886",
+          "body": "Hello, Dr. Evelyn Reed here from Helios Health. We are looking for an integrated client portal with auto-scheduling and Stripe billing.",
+          "direction": "inbound",
+          "status": "received",
+          "timestamp": "2026-10-18T07:18:22.507Z"
+        },
+        {
+          "id": "msg-02",
+          "from": "whatsapp:+14155238886",
+          "to": "whatsapp:+15558765432",
+          "body": "Thank you Dr. Reed! Our healthcare solutions architect has received your inquiry and will follow up shortly.",
+          "direction": "outbound",
+          "status": "delivered",
+          "timestamp": "2026-10-18T07:20:22.507Z"
+        }
+      ]
+    }
+  ],
+  "payments": [
+    {
+      "id": "pay-01",
+      "workspaceId": "ws-apex-01",
+      "opportunityId": "opp-03",
+      "contactId": "cont-03",
+      "createdByUserId": "usr-marcus-admin",
+      "amountCents": 3200000,
+      "currency": "USD",
+      "description": "Solaria Solar Pilot Deposit (Invoice #INV-2026-081)",
+      "status": "paid",
+      "stripeSessionId": "cs_test_a1b2c3d4e5f6g7h8i9",
+      "stripeEventId": "evt_1P_test_completed_001",
+      "paidAt": "2026-10-18T06:30:22.507Z",
+      "createdAt": "2026-10-17T07:30:22.507Z"
+    },
+    {
+      "id": "pay-02",
+      "workspaceId": "ws-apex-01",
+      "opportunityId": "opp-02",
+      "contactId": "cont-02",
+      "createdByUserId": "usr-david-manager",
+      "amountCents": 2500000,
+      "currency": "USD",
+      "description": "Helios Health Retainer Deposit (Invoice #INV-2026-082)",
+      "status": "pending",
+      "stripePaymentLinkId": "plink_test_helios_retainer",
+      "createdAt": "2026-10-18T06:30:22.507Z"
+    }
+  ],
+  "appointments": [
+    {
+      "id": "apt-01",
+      "workspaceId": "ws-apex-01",
+      "contactId": "cont-01",
+      "userId": "usr-elena-agent",
+      "title": "Vanguard Fleet Discovery & Architecture Call",
+      "startTime": "2026-10-18T09:30:22.507Z",
+      "endTime": "2026-10-18T10:30:22.507Z",
+      "timezone": "America/New_York",
+      "googleCalendarEventId": "gcal_evt_998124_vanguard",
+      "status": "confirmed",
+      "createdAt": "2026-10-17T07:30:22.507Z"
+    },
+    {
+      "id": "apt-02",
+      "workspaceId": "ws-apex-01",
+      "contactId": "cont-02",
+      "userId": "usr-david-manager",
+      "title": "Helios Health Executive Scope Signoff",
+      "startTime": "2026-10-19T09:30:22.507Z",
+      "endTime": "2026-10-19T10:30:22.507Z",
+      "timezone": "America/New_York",
+      "googleCalendarEventId": "gcal_evt_998125_helios",
+      "status": "confirmed",
+      "createdAt": "2026-10-17T07:30:22.507Z"
+    }
+  ],
+  "integrations": {
+    "ws-apex-01": {
+      "workspaceId": "ws-apex-01",
+      "twilio": {
+        "accountSid": "AC_test_sandbox_apex_mock_sid",
+        "authToken": "auth_test_token_hidden",
+        "whatsappNumber": "whatsapp:+14155238886",
+        "enabled": true,
+        "lastSyncAt": "2026-10-18T06:30:22.507Z"
+      },
+      "stripe": {
+        "publishableKey": "pk_test_51MockApexStripeKey",
+        "secretKey": "sk_test_MockApexStripeSecret_hidden",
+        "webhookSecret": "whsec_MockApexSecret_hidden",
+        "enabled": true,
+        "lastSyncAt": "2026-10-18T06:30:22.507Z"
+      },
+      "googleCalendar": {
+        "clientId": "mock-google-client-id.apps.googleusercontent.com",
+        "clientSecret": "mock-google-secret_hidden",
+        "connectedUsers": {
+          "usr-sarah-owner": {
+            "email": "owner@apexservices.com",
+            "connectedAt": "2026-10-17T07:30:22.507Z"
+          },
+          "usr-elena-agent": {
+            "email": "agent@apexservices.com",
+            "connectedAt": "2026-10-17T07:30:22.507Z"
+          }
+        },
+        "enabled": true,
+        "lastSyncAt": "2026-10-18T06:30:22.507Z"
+      },
+      "telegram": {
+        "botToken": "123456789:ABC_MockTelegramBotToken_hidden",
+        "chatId": "-100987654321",
+        "enabled": true,
+        "lastSyncAt": "2026-10-18T07:30:22.509Z"
+      }
+    }
+  },
+  "auditEvents": [
+    {
+      "id": "aud-01",
+      "workspaceId": "ws-apex-01",
+      "actorUserId": "usr-sarah-owner",
+      "actorType": "user",
+      "actorName": "Sarah Chen (Owner)",
+      "eventType": "WORKSPACE_INITIALIZED",
+      "targetEntity": "Workspace",
+      "targetId": "ws-apex-01",
+      "details": {
+        "name": "Apex Business Services"
+      },
+      "timestamp": "2026-10-17T07:30:22.507Z"
+    },
+    {
+      "id": "aud-02",
+      "workspaceId": "ws-apex-01",
+      "actorUserId": "usr-marcus-admin",
+      "actorType": "user",
+      "actorName": "Marcus Vance (Admin)",
+      "eventType": "CRM_PIPELINE_CREATED",
+      "targetEntity": "Pipeline",
+      "targetId": "pipe-enterprise-01",
+      "details": {
+        "stages": 6,
+        "customFields": 5
+      },
+      "timestamp": "2026-10-17T07:30:22.507Z"
+    },
+    {
+      "id": "aud-03",
+      "workspaceId": "ws-apex-01",
+      "actorType": "system",
+      "actorName": "Automated Lead Engine",
+      "eventType": "LEAD_ASSIGNED_ROUND_ROBIN",
+      "targetEntity": "Lead",
+      "targetId": "lead-02",
+      "details": {
+        "assignedTo": "usr-elena-agent",
+        "reason": "Round-robin available agent with capacity 1/5"
+      },
+      "timestamp": "2026-10-18T06:30:22.507Z"
+    },
+    {
+      "id": "aud-04",
+      "workspaceId": "ws-apex-01",
+      "actorType": "webhook",
+      "actorName": "Stripe Webhook",
+      "eventType": "PAYMENT_RECEIVED",
+      "targetEntity": "Payment",
+      "targetId": "pay-01",
+      "details": {
+        "amountCents": 3200000,
+        "currency": "USD",
+        "status": "paid"
+      },
+      "timestamp": "2026-10-18T06:30:22.507Z"
+    },
+    {
+      "workspaceId": "ws-apex-01",
+      "actorType": "system",
+      "actorName": "Escalation Engine",
+      "eventType": "LEAD_SLA_ESCALATED",
+      "targetEntity": "Lead",
+      "targetId": "lead-overdue-1792308622508",
+      "details": {
+        "previousAssignee": "usr-elena-agent",
+        "escalatedTo": "usr-marcus-admin",
+        "escalationLevel": 1,
+        "expiredDeadline": "2026-10-18T07:30:17.508Z"
+      },
+      "id": "aud-1792308622508-wj8dp",
+      "timestamp": "2026-10-18T07:30:22.508Z"
+    },
+    {
+      "workspaceId": "ws-apex-01",
+      "actorType": "system",
+      "actorName": "Telegram Dispatcher",
+      "eventType": "TELEGRAM_ALERT_DISPATCHED",
+      "targetEntity": "Lead",
+      "targetId": "lead-overdue-1792308622508",
+      "details": {
+        "chatId": "-100987654321",
+        "level": 1
+      },
+      "id": "aud-1792308622509-hxwfn",
+      "timestamp": "2026-10-18T07:30:22.509Z"
+    }
+  ],
+  "dashboardPreferences": [
+    {
+      "workspaceId": "ws-apex-01",
+      "userId": "usr-sarah-owner",
+      "hiddenCardKeys": []
+    }
+  ],
+  "sessions": {
+    "mock-session-owner": {
+      "userId": "usr-sarah-owner",
+      "workspaceId": "ws-apex-01",
+      "expiresAt": "2026-10-25T07:30:22.507Z"
+    }
+  }
+}
